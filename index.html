@@ -3,7 +3,7 @@ index.html
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Other Diagnostic</title>
+    <title>Diagnostic</title>
     <style>
         /* CRT Screen Base Setup */
         body { 
@@ -70,3 +70,41 @@ index.html
         window.onload = typeWriter;
     </script>
 </body>
+<body>
+    <div class="terminal-container">
+        <h2>[JCJENSON ORBITAL RELAY INFRASTRUCTURE]</h2>
+        <p>CAUTION: RESTRICTED ACCESS TERMINAL</p>
+        <br>
+        <label for="passwordInput">ENTER SECURE ACCESS KEY:</label>
+        <br><br>
+        <!-- Interactive input field for players to type into -->
+        <input type="password" id="passwordInput" placeholder="SYSTEM_LOGIN..." autocomplete="off">
+        <button onclick="checkPassword()">SUBMIT</button>
+        
+        <!-- Error or success messages show up here -->
+        <p id="feedbackMessage" style="color: #ff3333; margin-top: 20px;"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            // Get the text typed by the player and make it uppercase
+            const input = document.getElementById("passwordInput").value.toUpperCase().trim();
+            const feedback = document.getElementById("feedbackMessage");
+
+            // Change "CYN" to whatever password secret you want to use
+            if (input === "ADMIN123") {
+                feedback.style.color = "#00ff33";
+                feedback.innerHTML = "ACCESS GRANTED. REDIRECTING TO CABIN FEVER LABS...";
+                
+                // Automatically sends them to your secret folder after 2 seconds
+                setTimeout(function() {
+                    window.location.href = "./cflab-7a2d/subjects.html";
+                }, 2000);
+            } else {
+                feedback.style.color = "#ff3333";
+                feedback.innerHTML = "ERROR: INVALID CREDENTIALS. THE SOLVER IS WATCHING.";
+            }
+        }
+    </script>
+</body>
+</html>
