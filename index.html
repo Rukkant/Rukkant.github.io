@@ -14,6 +14,50 @@ index.html
             overflow: hidden;
             text-shadow: 0 0 8px rgba(0, 255, 51, 0.6);
         }
+        body {
+            background-color: #030303; /* Purple Solver */
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 40px;
+            overflow: hidden;
+            text-shadow: 0 0 8px rgba(0, 255, 51, 0.6);
+        }
+
+        /* PASTE THE POPUP STYLES DIRECTLY HERE */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box {
+            background-color: #050b14;
+            border: 2px solid #0088ff;
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 15px rgba(0, 136, 255, 0.4);
+        }
+
+        .modal-box h3 { color: #0088ff; margin-top: 0; }
+        .modal-box p { color: white; margin-bottom: 20px; }
+
+        .modal-box button {
+            background-color: #111;
+            color: #0088ff;
+            border: 1px solid #0088ff;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+        .modal-box button:hover {
+            background-color: #0088ff;
+            color: black;
+        }
 
         /* Scanline Overlay Grid Effect */
         body::before {
@@ -82,6 +126,13 @@ index.html
         <!-- Error or success messages show up here -->
         <p id="feedbackMessage" style="color: #ff3333; margin-top: 20px;"></p>
     </div>
+<div id="customAlert" class="modal-overlay">
+    <div class="modal-box">
+        <h3>SYSTEM CORRUPTION: MAX / ADMIN123</h3>
+        <p>"Who are you... how did you know me?"</p>
+        <button onclick="dismissAlert()">OK</button>
+    </div>
+</div>
 
     <script>
         function checkPassword() {
@@ -91,19 +142,10 @@ index.html
             if (input === "ADMIN123") {
                 feedback.style.color = "#00ff33";
                 feedback.innerHTML = "ACCESS GRANTED. DECRYPTING TERMINAL CONNECTIONS...";
-                
-                // Max's customized dialogue pop-up message box
-                alert("Max / Admin123: \"Who are you... how did you know me?\"");
-
-                // Automatically sends them to the secret directory after the alert is dismissed
-                setTimeout(function() {
-                    window.location.href = "./cflab-7a2d/subjects.html";
-                }, 1000);
-            } else {
+                document.getElementById("customAlert").style.display = "flex";
                 feedback.style.color = "#ff3333";
-                feedback.innerHTML = "ERROR: INVALID CREDENTIALS. THE SOLVER IS WATCHING.";
-            }
-        }
+                feedback.innerHTML = "ERROR: INVALID CREDENTIALS. THE SOLVER IS WATCHING."
+function dismissAlert() {
+    document.getElementById("customAlert").style.display = "none";
+    window.location.href = "./cflab-7a2d/subjects.html";
     </script>
-</body>
-</html>
