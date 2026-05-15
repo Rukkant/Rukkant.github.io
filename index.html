@@ -3,27 +3,52 @@ index.html
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Diagnostic</title>
+    <title>Absolute Solver Diagnostic</title>
     <style>
-        /* CRT Screen Base Setup */
         body { 
-            background-color: #030303; Purple Solver */
+            background-color: #030303; 
+            color: #730004; 
             font-family: 'Courier New', Courier, monospace; 
             margin: 0;
             padding: 40px;
             overflow: hidden;
-            text-shadow: 0 0 8px rgba(0, 255, 51, 0.6);
+            text-shadow: 0 0 8px rgba(115, 0, 4, 0.6);
         }
-        body {
-            background-color: #030303; /* Purple Solver */
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 40px;
-            overflow: hidden;
-            text-shadow: 0 0 8px rgba(0, 255, 51, 0.6);
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
         }
-
-        /* PASTE THE POPUP STYLES DIRECTLY HERE */
+        .cursor {
+            display: inline-block;
+            background-color: #730004;
+            width: 10px;
+            height: 18px;
+            margin-left: 4px;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 49% { background-color: #730004; }
+            50%, 100% { background-color: transparent; }
+        }
+        input, button {
+            background-color: #111;
+            color: #730004;
+            border: 1px solid #730004;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        button:hover {
+            background-color: #730004;
+            color: black;
+            cursor: pointer;
+        }
         .modal-overlay {
             display: none;
             position: fixed;
@@ -33,7 +58,6 @@ index.html
             align-items: center;
             justify-content: center;
         }
-
         .modal-box {
             background-color: #050b14;
             border: 2px solid #0088ff;
@@ -43,10 +67,8 @@ index.html
             font-family: 'Courier New', monospace;
             box-shadow: 0 0 15px rgba(0, 136, 255, 0.4);
         }
-
         .modal-box h3 { color: #0088ff; margin-top: 0; }
         .modal-box p { color: white; margin-bottom: 20px; }
-
         .modal-box button {
             background-color: #111;
             color: #0088ff;
@@ -58,83 +80,45 @@ index.html
             background-color: #0088ff;
             color: black;
         }
-
-        /* Scanline Overlay Grid Effect */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 3px, 6px 100%;
-            pointer-events: none;
-        }
-
-        /* Blinking Terminal Cursor */
-        .cursor {
-            display: inline-block;
-            background-color: #7300D4;
-            width: 10px;
-            height: 18px;
-            margin-left: 4px;
-            animation: blink 0.8s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink {
-            0%, 49% { background-color: #7300D4; }
-            50%, 100% { background-color: transparent; }
-        }
     </style>
 </head>
-<!-- SECRETS FINDER: [ALERT] Ş̴͉͋͆O̴̲̭͆̓M̸̫̞̄͒Ȅ̵̖̙̒T̷͙̬̊Ḧ̵͍̫I̸̧̽͋N̶͖̓̆Ǧ̷͈͖ ̷̲̏̈́I̸̟͐͋S̷͉͊ ̴̮̣̚W̸͍̺̐R̷͇̭͑̉Õ̶̼̭N̸͇͋́Ǵ̸̹̹ -->
 <body>
 
-    <!-- Container where the script will automatically type the text -->
-    <h1 id="terminal-text"></h1>
+    <div class="terminal-container">
+        <h1 id="terminal-text"></h1>
+        <h2>[JCJENSON ORBITAL RELAY INFRASTRUCTURE]</h2>
+        <p>CAUTION: RESTRICTED ACCESS TERMINAL</p>
+        <br>
+        <label for="passwordInput">ENTER SECURE ACCESS KEY:</label>
+        <br><br>
+        <input type="text" id="passwordInput" placeholder="SYSTEM_LOGIN..." autocomplete="off">
+        <button onclick="checkPassword()">SUBMIT</button>
+        <p id="feedbackMessage" style="margin-top: 20px;"></p>
+    </div>
+
+    <div id="customAlert" class="modal-overlay">
+        <div class="modal-box">
+            <h3>SYSTEM CORRUPTION: MAX / ADMIN123</h3>
+            <p>"Who are you... how did you know me?"</p>
+            <button onclick="dismissAlert()">OK</button>
+        </div>
+    </div>
 
     <script>
-        // The exact string the site will write out character-by-character
-        const textToType = "Absolute Solver Terminal initialized...;
+        const textToType = "Absolute Solver Terminal initialized...";
         let index = 0;
-        const speed = 100; // Time delay between characters in milliseconds
+        const speed = 70;
 
         function typeWriter() {
             if (index < textToType.length) {
-                // Select container, append next character, and re-append cursor
                 document.getElementById("terminal-text").innerHTML = 
                     textToType.substring(0, index + 1) + '<span class="cursor"></span>';
                 index++;
                 setTimeout(typeWriter, speed);
             }
         }
-
-        // Start the automated typing routine once page assets load
         window.onload = typeWriter;
-    </script>
-    <div class="terminal-container">
-        <h2>[JCJENSON ORBITAL RELAY INFRASTRUCTURE]</h2>
-        <p>CAUTION: RESTRICTED ACCESS TERMINAL</p>
-        <br>
-        <label for="passwordInput">ENTER SECURE ACCESS KEY:</label>
-        <br><br>
-        <!-- Interactive input field for players to type into -->
-        <input type="text" id="passwordInput" placeholder="SYSTEM_LOGIN..." autocomplete="off">
-        <button onclick="checkPassword()">SUBMIT</button>
-        
-        <!-- Error or success messages show up here -->
-        <p id="feedbackMessage" style="color: #ff3333; margin-top: 20px;"></p>
-    </div>
-<div id="customAlert" class="modal-overlay">
-    <div class="modal-box">
-        <h3>SYSTEM CORRUPTION: MAX / ADMIN123</h3>
-        <p>"Who are you... how did you know me?"</p>
-        <button onclick="dismissAlert()">OK</button>
-    </div>
-</div>
 
-    <script>
         function checkPassword() {
             const input = document.getElementById("passwordInput").value.toUpperCase().trim();
             const feedback = document.getElementById("feedbackMessage");
@@ -143,9 +127,16 @@ index.html
                 feedback.style.color = "#00ff33";
                 feedback.innerHTML = "ACCESS GRANTED. DECRYPTING TERMINAL CONNECTIONS...";
                 document.getElementById("customAlert").style.display = "flex";
+            } else {
                 feedback.style.color = "#ff3333";
-                feedback.innerHTML = "ERROR: INVALID CREDENTIALS. THE SOLVER IS WATCHING."
-function dismissAlert() {
-    document.getElementById("customAlert").style.display = "none";
-    window.location.href = "./cflab-7a2d/subjects.html";
+                feedback.innerHTML = "ERROR: INVALID CREDENTIALS. THE SOLVER IS WATCHING.";
+            }
+        }
+
+        function dismissAlert() {
+            document.getElementById("customAlert").style.display = "none";
+            window.location.href = "./cflab-7a2d/subjects.html";
+        }
     </script>
+</body>
+</html>
