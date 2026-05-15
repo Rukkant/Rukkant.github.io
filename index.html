@@ -85,19 +85,20 @@ index.html
 
     <script>
         function checkPassword() {
-            // Get the text typed by the player and make it uppercase
             const input = document.getElementById("passwordInput").value.toUpperCase().trim();
             const feedback = document.getElementById("feedbackMessage");
 
-            // Change "CYN" to whatever password secret you want to use
             if (input === "ADMIN123") {
                 feedback.style.color = "#00ff33";
-                feedback.innerHTML = "ACCESS GRANTED. REDIRECTING TO CABIN FEVER LABS...";
+                feedback.innerHTML = "ACCESS GRANTED. DECRYPTING TERMINAL CONNECTIONS...";
                 
-                // Automatically sends them to your secret folder after 2 seconds
+                // Max's customized dialogue pop-up message box
+                alert("Max / Admin123: \"Who are you... how did you know me?\"");
+
+                // Automatically sends them to the secret directory after the alert is dismissed
                 setTimeout(function() {
                     window.location.href = "./cflab-7a2d/subjects.html";
-                }, 2000);
+                }, 1000);
             } else {
                 feedback.style.color = "#ff3333";
                 feedback.innerHTML = "ERROR: INVALID CREDENTIALS. THE SOLVER IS WATCHING.";
