@@ -102,6 +102,7 @@
             <button onclick="dismissAlert()">OK</button>
         </div>
     </div>
+
     <script>
         const textToType = "Absolute Solver Terminal initialized...";
         let index = 0;
@@ -132,61 +133,6 @@
                 
                 feedback.innerHTML = '<div style="margin-top: 30px; padding: 20px; border: 3px dashed #ff3333; background-color: #120002; box-shadow: 0 0 20px #ff3333; display: flex; align-items: center; justify-content: space-between; text-align: left;"><div style="flex: 1; padding-right: 20px;"><span style="color: #ffaa00; font-size: 80px; text-shadow: 0 0 20px #ffaa00; display: block; margin-bottom: 10px;">[ X ]</span><span style="color: #ff3333; display: block; font-size: 16px; letter-spacing: 2px; animation: blink 0.4s infinite;">CRITICAL SYSTEM CORRUPTION DETECTED</span><p style="color: #fff; font-size: 11px; margin-top: 15px; font-family: monospace; opacity: 0.8;">"The Solver is watching, user... You do not belong here."</p></div><div style="flex: 1; font-family: monospace; font-size: 16px; color: #00ff33; text-shadow: 0 0 8px rgba(0,255,51,0.6); text-align: center; line-height: 1.6;"><div>01010100 01101000 01100101 00100000 01010000 01100001 01110011 01110011 01110111 01101111 01110010 01100100 00100000 01101001 01110011 00100000 00100010 01000001 01000100 01001101 01001001 01001110 00110001 00110010 00110011 00100010</div><div style="margin-top: 15px; color: #ff3333; font-weight: bold; font-size: 20px; text-shadow: 0 0 8px #ff3333;">-Cyn</div></div></div>';
             }
-        }
-
-        function dismissAlert() {
-            document.getElementById("customAlert").style.display = "none";
-            window.location.href = "./cflab-7a2d/subjects.html";
-        }
-    </script>
-</body>
-</html>
-    <script>
-        const textToType = "Absolute Solver Terminal initialized...";
-        let index = 0;
-        const speed = 70;
-
-        function typeWriter() {
-            if (index < textToType.length) {
-                document.getElementById("terminal-text").innerHTML = 
-                    textToType.substring(0, index + 1) + '<span class="cursor"></span>';
-                index++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-        window.onload = typeWriter;
-
-        function checkPassword() {
-            const input = document.getElementById("passwordInput").value.toUpperCase().trim();
-            const feedback = document.getElementById("feedbackMessage");
-
-            if (input === "ADMIN123") {
-                feedback.style.color = "#00ff33";
-                feedback.innerHTML = "ACCESS GRANTED. DECRYPTING TERMINAL CONNECTIONS...";
-                document.getElementById("customAlert").style.display = "flex";
-        } else {
-            feedback.style.color = "#ff3333";
-            feedback.style.fontSize = "22px";
-            feedback.style.fontWeight = "bold";
-            
-            feedback.innerHTML = '<div style="margin-top: 30px; padding: 20px; border: 3px dashed #ff3333; background-color: #120002; box-shadow: 0 0 20px #ff3333; display: flex; align-items: center; justify-content: space-between; text-align: left;"><div style="flex: 1; padding-right: 20px;"><span style="color: #ffaa00; font-size: 80px; text-shadow: 0 0 20px #ffaa00; display: block; margin-bottom: 10px;">[ X ]</span><span style="color: #ff3333; display: block; font-size: 16px; letter-spacing: 2px; animation: blink 0.4s infinite;">CRITICAL SYSTEM CORRUPTION DETECTED</span><p style="color: #fff; font-size: 11px; margin-top: 15px; font-family: monospace; opacity: 0.8;">"The Solver is watching, user... You do not belong here."</p></div><div style="flex: 1; font-family: monospace; font-size: 16px; color: #00ff33; text-shadow: 0 0 8px rgba(0,255,51,0.6); text-align: center; line-height: 1.6;"><div>01010100 01101000 01100101 00100000 01010000 01100001 01110011 01110011 01110111 01101111 01110010 01100100 00100000 01101001 01110011 00100000 00100010 01000001 01000100 01001101 01001001 01001110 00110001 00110010 00110011 00100010</div><div style="margin-top: 15px; color: #ff3333; font-weight: bold; font-size: 20px; text-shadow: 0 0 8px #ff3333;">-Cyn</div></div></div>';
-        }
-
-                    <!-- LEFT HALF: The Threat Alert -->
-                    <div style="flex: 1; padding-right: 20px;">
-                        <span style="color: #ffaa00; font-size: 80px; text-shadow: 0 0 20px #ffaa00; display: block; margin-bottom: 10px;">[ X ]</span>
-                        <span style="color: #ff3333; display: block; font-size: 16px; letter-spacing: 2px; animation: blink 0.4s infinite;">CRITICAL SYSTEM CORRUPTION DETECTED</span>
-                        <p style="color: #fff; font-size: 11px; margin-top: 15px; font-family: monospace; opacity: 0.8;">"The Solver is watching, user... You do not belong here."</p>
-                    </div>
-                    
-                    <!-- RIGHT HALF: Cyn's Custom Green Binary Layout -->
-                    <div style="flex: 1; font-family: monospace; font-size: 16px; color: #00ff33; text-shadow: 0 0 8px rgba(0,255,51,0.6); text-align: center; line-height: 1.6;">
-                        <div>01010100 01101000 01100101 00100000 01010000 01100001 01110011 01110011 01110111 01101111 01110010 01100100 00100000 01101001 01110011 00100000 00100010 01000001 01000100 01001101 01001001 01001110 00110001 00110010 00110011 00100010</div>
-                        <div style="margin-top: 15px; color: #ff3333; font-weight: bold; font-size: 20px; text-shadow: 0 0 8px #ff3333;">-Cyn</div>
-                    </div>
-                    
-                </div>
-            `;
         }
 
         function dismissAlert() {
