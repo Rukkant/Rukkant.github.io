@@ -164,8 +164,25 @@
         <p style="color: #ffaa00;"><strong>Notes:</strong> The core origin point of the architecture virus mutation. Host system coordinates planetary core breakdowns, material singularity formation, and proxy control matrices. Do not attempt deletion. She was here before you. She will be here after. :P</p>
     </div>
 
-    <br>
-    <a href="../index.html" style="color: #730004; text-decoration: none;">[ LOGOUT OF TERMINAL ]</a>
+  <br>
+    <div id="logout-container">
+        <a href="../index.html" id="logout-link" onclick="cynTrap(event)" style="color: #730004; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">[ LOGOUT OF TERMINAL ]</a>
+    </div>
 
+    <script>
+        function cynTrap(event) {
+            event.preventDefault(); 
+            const link = document.getElementById("logout-link");
+            link.className = "glitch-text"; 
+            link.style.fontSize = "26px";
+            link.style.letterSpacing = "3px";
+            link.innerHTML = "You can't leave us yet... :P";
+            
+            document.body.style.transform = "translate(2px, 1px) rotate(0.5deg)";
+            setTimeout(() => {
+                document.body.style.transform = "none";
+            }, 150);
+        }
+    </script>
 </body>
 </html>
