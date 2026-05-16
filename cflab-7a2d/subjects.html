@@ -173,13 +173,26 @@
         function cynTrap(event) {
             event.preventDefault(); 
             const link = document.getElementById("logout-link");
+            
             link.removeAttribute("href");
             link.className = "glitch-text"; 
             link.style.fontSize = "26px";
             link.style.letterSpacing = "3px";
-            link.innerHTML = "You can't leave us yet... :P";
+            link.innerHTML = "Giggle Giggle but you can't leave us yet... :P";
             
-            document.body.style.transform = "translate(2px, 1px) rotate(0.5deg)";
+            // --- AI CYN VOICE AUDIO ENGINE ---
+            try {
+                // Creates a new media loader targeting the audio file we uploaded
+                // We use ../cyn.mp3 because the file sits outside our cflab folder
+                var cynVoice = new Audio("../cyn.mp3");
+                cynVoice.volume = 0.6; // Adjusts volume level (0.0 quiet to 1.0 loudest)
+                cynVoice.play();       // Fires the audio instantly on button press
+            } catch(e) {
+                console.log("Audio file failed to initialize.");
+            }
+            
+            // Violent screen shake mechanical movement
+            document.body.style.transform = "translate(4px, 2px) rotate(1deg)";
             setTimeout(() => {
                 document.body.style.transform = "none";
             }, 150);
