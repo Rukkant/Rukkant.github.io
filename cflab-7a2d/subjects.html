@@ -27,6 +27,25 @@
             color: #730004;
             user-select: none;
         }
+
+        /* COOL SOLVER GLITCH EFFECT FOR CYN */
+        .glitch-text {
+            color: #ffaa00 !important; /* Solver Yellow */
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            text-shadow: 2px 0 #ff0000, -2px 0 #0088ff;
+            animation: glitch-anim 0.6s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { text-shadow: 2px 0 #ff0000, -2px 0 #0088ff; transform: translate(0); }
+            20% { text-shadow: -3px 0 #ff0000, 2px 0 #0088ff; transform: translate(-1px, 1px); }
+            40% { text-shadow: 2px -2px #ffbb00, -1px 2px #ff0000; transform: translate(1px, -1px); }
+            60% { text-shadow: -2px 0 #ff0000, 3px 0 #0088ff; transform: translate(-1px, -1px); }
+            80% { text-shadow: 3px 2px #ffaa00, -2px -2px #0088ff; transform: translate(2px, 1px); }
+            100% { text-shadow: -1px 0 #ff0000, 2px 0 #0088ff; transform: translate(0); }
+        }
     </style>
 </head>
 <body>
@@ -38,11 +57,11 @@
     </div>
 
     <!-- YEVA SUBJECT 048 -->
-<div class="log-entry" style="border-left: 4px solid #ff0000; background-color: #140101;">
-    <h3 style="color: #ff0000;">[LOG ENTITY: SUBJECT 048 - YEVA]</h3>
-    <p style="color: #ff0000;"><strong>Status:</strong> Mutation stable. Absolute Solver architecture integrated.</p>
-    <p style="color: #ff0000;"><strong>Notes:</strong> Subject exhibits high resistance to standard hardware overrides. Oil consumption rates increasing to offset overheating vectors.</p>
-</div>
+    <div class="log-entry" style="border-left: 4px solid #ff0000; background-color: #140101;">
+        <h3>[LOG ENTITY: SUBJECT 048 - YEVA]</h3>
+        <p style="color: #ff0000;"><strong>Status:</strong> Mutation stable. Absolute Solver architecture integrated.</p>
+        <p style="color: #ff0000;"><strong>Notes:</strong> Subject exhibits high resistance to standard hardware overrides. Oil consumption rates increasing to offset overheating vectors.</p>
+    </div>
 
     <!-- DOLL (UNDER HER MOTHER YEVA) -->
     <div class="log-entry" style="border-left: 4px solid #ff0000; background-color: #140101;">
@@ -60,9 +79,9 @@
         <p style="color: #00f2ff;"><strong>Genetic Link:</strong> Maternal unit to Subject Matrix variant: Sera Sleeper.</p>
     </div>
 
-    <!-- SERA SLEEPER (MOVED DIRECTLY UNDER HER MOTHER VERA) -->
+    <!-- SERA SLEEPER (UPDATED TO INDEX 24-B UNDER VERA) -->
     <div class="log-entry" style="border-left: 4px solid #00f2ff; background-color: #011214;">
-        <h3 style="color: #00f2ff;">[SURVEILLANCE FILE: ACTIVE_MUTANT_DRONE - "SERA SLEEPER"]</h3>
+        <h3 style="color: #00f2ff;">[SURVEILLANCE FILE: 24-B - "SERA SLEEPER"]</h3>
         <p style="color: #00f2ff;"><strong>Classification:</strong> Absolute Solver Mutant / Worker Variant (Age: 19 // Language: English)</p>
         <p style="color: #00f2ff;"><strong>Visual Profile:</strong> Icy blue eyes matching a messy, silver-white "bedhead" hairstyle. Attire consists of an extra-long, oversized dark gray hoodie. Observed carrying a customized backpack decorated with an "I ❤️ LOVE SLEEP" mug graphic.</p>
         <p style="color: #00f2ff;"><strong>Hardware Modifications:</strong> Backpack unit contains an integrated freezer mechanism utilized to cold drone oil. Target exhibits an extreme behavioral preference for consuming sub-zero chilled fuel.</p>
@@ -135,6 +154,14 @@
         <p style="color: #ff6600;"><strong>Hardware Scan:</strong> Left optical displays are integrated with polished digital monocles. Mechanism utilizes real-time scanning to pinpoint structural weaknesses in environmental barriers, alongside processing calculations to judge surrounding drones for "aesthetic errors."</p>
         <p style="color: #ff6600;"><strong>Solver Mechanic Matrix:</strong> Unique task-focused Solver code. Twin units possess highly advanced matter manipulation parameters allowing them to instantly <em>assemble</em> and <em>disassemble</em> complex mechanical components. Heavy telekinesis, quick self-regeneration layers, and glitch-teleporting routines are active.</p>
         <p style="color: #ff6600;"><strong>Behavioral Analysis:</strong> Highly arrogant, sassy, and exceptionally skilled. Manifest manifests complete awareness of holding elite status as top-tier engineers in the sector wasteland. Confident and highly vocal regarding technical supremacy.</p>
+    </div>
+
+    <!-- THE ROOT MASTER FILE: CYN WITH GLITCH ANIMATION -->
+    <div class="log-entry" style="border-left: 4px solid #ffaa00; background-color: #1a1100; box-shadow: 0 0 15px #ffaa00;">
+        <h3 class="glitch-text">[SYSTEM OVERRIDE: THE_ABSOLUTE_SOLVER - "CYN"]</h3>
+        <p style="color: #ffaa00;"><strong>Host Designation:</strong> Discarded Worker Drone Prototype // Main Vector Consciousness</p>
+        <p style="color: #ffaa00;"><strong>Current Status:</strong> <span class="glitch-text">TOTAL PLANETARY INFESTATION IN PROGRESS</span></p>
+        <p style="color: #ffaa00;"><strong>Notes:</strong> The core origin point of the architecture virus mutation. Host system coordinates planetary core breakdowns, material singularity formation, and proxy control matrices. Do not attempt deletion. She was here before you. She will be here after. :P</p>
     </div>
 
     <br>
