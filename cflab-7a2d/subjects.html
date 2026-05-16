@@ -169,43 +169,53 @@
         <a href="#" id="logout-link" onclick="cynTrap(event)" style="color: #730004; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">[ LOGOUT OF TERMINAL ]</a>
     </div>
 
-    <script>
-        function cynTrap(event) {
-            event.preventDefault(); 
-            const link = document.getElementById("logout-link");
-            
-            link.removeAttribute("href");
-            link.className = "glitch-text"; 
-            link.style.fontSize = "26px";
-            link.style.letterSpacing = "3px";
-            link.innerHTML = "Giggle Giggle i am so naughty but you can't leave us yet... :P";
-            
-            // --- AI CYN VOICE AUDIO ENGINE ---
-            // --- ABSOLUTE SOLVER AUDIO BOOST AMPLIFIER ---
-            try {
-                // Initialize the professional browser audio system context
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+<script>
+    // 1. Move audio tools out here so they never crash the click function
+    var cynVoice = new Audio("../cyn.mp3.mp3");
+    var audioCtx = null;
+    var source = null;
+    var gainNode = null;
+
+    function cynTrap(event) {
+        event.preventDefault(); 
+        const link = document.getElementById("logout-link");
+        
+        link.removeAttribute("href");
+        link.className = "glitch-text"; 
+        link.style.fontSize = "26px";
+        link.style.letterSpacing = "3px";
+        link.innerHTML = "Giggle Giggle i am so naughty but you can't leave us yet... :P";
+        
+        // --- ABSOLUTE SOLVER AUDIO BOOST AMPLIFIER ---
+        try {
+            // Setup the amplifier nodes ONLY on the very first click
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                source = audioCtx.createMediaElementSource(cynVoice);
+                gainNode = audioCtx.createGain();
                 
-                // Load your voice asset file
-                var cynVoice = new Audio("../cyn.mp3.mp3");
-                
-                // Create a digital source tracker and an amplifier node
-                const source = audioCtx.createMediaElementSource(cynVoice);
-                const gainNode = audioCtx.createGain();
-                
-                // --- MULTIPLY VOLUME HERE ---
-                // 1.0 is normal. 2.5 multiplies her voice volume by two and a half times!
+                // MULTIPLY VOLUME BY 250% (Increase 2.5 to 3.0 or 4.0 if you want it even louder!)
                 gainNode.gain.setValueAtTime(2.5, audioCtx.currentTime); 
                 
-                // Wire her voice file through the amplifier, then out to the speakers
                 source.connect(gainNode);
                 gainNode.connect(audioCtx.destination);
-                
-                // Fire the supercharged audio track instantly
-                cynVoice.play();
-            } catch(e) {
-                console.log("Audio boost engine matrix locked.");
             }
-    </script>
+            
+            // Rewind sound file to the start and fire it loud
+            cynVoice.currentTime = 0;
+            cynVoice.play();
+        } catch(e) {
+            // Backup full volume trigger if browser restricts the amplifier node
+            cynVoice.volume = 1.0;
+            cynVoice.play();
+        }
+        
+        // Violent screen shake mechanical movement
+        document.body.style.transform = "translate(4px, 2px) rotate(1deg)";
+        setTimeout(() => {
+            document.body.style.transform = "none";
+        }, 150);
+    }
+</script>
 </body>
 </html>
