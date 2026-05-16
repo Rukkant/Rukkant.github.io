@@ -166,13 +166,14 @@
 
   <br>
     <div id="logout-container">
-        <a href="../index.html" id="logout-link" onclick="cynTrap(event)" style="color: #730004; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">[ LOGOUT OF TERMINAL ]</a>
+        <a href="#" id="logout-link" onclick="cynTrap(event)" style="color: #730004; text-decoration: none; font-weight: bold; font-family: 'Courier New', monospace;">[ LOGOUT OF TERMINAL ]</a>
     </div>
 
     <script>
         function cynTrap(event) {
             event.preventDefault(); 
             const link = document.getElementById("logout-link");
+            link.removeAttribute("href");
             link.className = "glitch-text"; 
             link.style.fontSize = "26px";
             link.style.letterSpacing = "3px";
