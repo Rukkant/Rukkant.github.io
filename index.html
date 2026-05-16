@@ -127,10 +127,20 @@ index.html
                 feedback.style.color = "#00ff33";
                 feedback.innerHTML = "ACCESS GRANTED. DECRYPTING TERMINAL CONNECTIONS...";
                 document.getElementById("customAlert").style.display = "flex";
-            } else {
-                feedback.style.color = "#ff3333";
-                feedback.innerHTML = "ERROR: INVALID CREDENTIALS. THE SOLVER IS WATCHING.";
-            }
+            // ABSOLUTE SOLVER ERROR SCAN TRIGGERED!
+            feedback.style.color = "#ff3333";
+            feedback.style.fontSize = "22px";
+            feedback.style.fontWeight = "bold";
+            
+            feedback.innerHTML = `
+                <div style="margin-top: 30px; padding: 20px; border: 3px dashed #ff3333; background-color: #120002; box-shadow: 0 0 20px #ff3333;">
+                    <span style="color: #ffaa00; font-size: 80px; text-shadow: 0 0 20px #ffaa00; display: block; margin-bottom: 10px;">[ X ]</span>
+                    <span style="color: #ff3333; display: block; letter-spacing: 2px; animation: blink 0.4s infinite;">CRITICAL SYSTEM CORRUPTION DETECTED</span>
+                    <p style="color: #fff; font-size: 14px; margin-top: 15px; font-family: monospace;">
+                        "The Solver is watching, user... You do not belong here."
+                    </p>
+                </div>
+            `;
         }
 
         function dismissAlert() {
