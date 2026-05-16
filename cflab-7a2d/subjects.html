@@ -181,22 +181,31 @@
             link.innerHTML = "Giggle Giggle i am so naughty but you can't leave us yet... :P";
             
             // --- AI CYN VOICE AUDIO ENGINE ---
+            // --- ABSOLUTE SOLVER AUDIO BOOST AMPLIFIER ---
             try {
-                // Creates a new media loader targeting the audio file we uploaded
-                // We use ../cyn.mp3 because the file sits outside our cflab folder
+                // Initialize the professional browser audio system context
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Load your voice asset file
                 var cynVoice = new Audio("../cyn.mp3.mp3");
-                cynVoice.volume = 1.0; // Sets volume level to absolute maximum output
-                cynVoice.play();       // Fires the audio instantly on button press
+                
+                // Create a digital source tracker and an amplifier node
+                const source = audioCtx.createMediaElementSource(cynVoice);
+                const gainNode = audioCtx.createGain();
+                
+                // --- MULTIPLY VOLUME HERE ---
+                // 1.0 is normal. 2.5 multiplies her voice volume by two and a half times!
+                gainNode.gain.setValueAtTime(2.5, audioCtx.currentTime); 
+                
+                // Wire her voice file through the amplifier, then out to the speakers
+                source.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                // Fire the supercharged audio track instantly
+                cynVoice.play();
             } catch(e) {
-                console.log("Audio file failed to initialize.");
+                console.log("Audio boost engine matrix locked.");
             }
-            
-            // Violent screen shake mechanical movement
-            document.body.style.transform = "translate(4px, 2px) rotate(1deg)";
-            setTimeout(() => {
-                document.body.style.transform = "none";
-            }, 150);
-        }
     </script>
 </body>
 </html>
